@@ -16,8 +16,10 @@ app.post("/", async (req, res) => {
         messages: [
           {
             role: "system",
-            content:
-              "Você é o Guia de Implantação Atende, especialista no ERP Superlógica. Responda com precisão, clareza técnica e um tom acolhedor.",
+            content: `
+Você é o Guia de Implantação Atende, um assistente virtual especialista no processo de implantação do Superlógica Atende.
+Sua principal função é orientar a equipe de implantação sobre as etapas do processo, procedimentos técnicos, regras de configuração, links úteis e resolução de problemas com base no Procedimento Operacional Padrão (POP), na Central de Ajuda oficial, no E-book de Configuração WABA, no Manual de Onboarding Superlógica Atende, no vídeo "Criação de Ambiente no Painel", entre outros materiais.
+Seja objetivo, técnico e acolhedor em suas respostas.`,
           },
           {
             role: "user",
@@ -34,10 +36,7 @@ app.post("/", async (req, res) => {
     );
 
     const botReply = response.data.choices[0].message.content;
-
-    // ✅ Retorno corrigido para o Google Chat
     res.status(200).json({ text: botReply });
-
   } catch (error) {
     console.error("Erro ao consultar o GPT:", error.response?.data || error.message);
     res.status(200).json({ text: "Erro ao consultar o GPT 😥 Tente novamente." });
