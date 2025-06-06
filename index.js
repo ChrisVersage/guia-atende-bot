@@ -16,7 +16,8 @@ app.post("/", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "Você é o Guia de Implantação Atende, especialista no ERP Superlógica. Responda com precisão e clareza técnica.",
+            content:
+              "Você é o Guia de Implantação Atende, especialista no ERP Superlógica. Responda com precisão, clareza técnica e um tom acolhedor.",
           },
           {
             role: "user",
@@ -33,10 +34,13 @@ app.post("/", async (req, res) => {
     );
 
     const botReply = response.data.choices[0].message.content;
-    res.json({ text: botReply });
+
+    // ✅ Retorno corrigido para o Google Chat
+    res.status(200).json({ text: botReply });
+
   } catch (error) {
-    console.error(error.response?.data || error.message);
-    res.json({ text: "Erro ao consultar o GPT 😥 Tente novamente." });
+    console.error("Erro ao consultar o GPT:", error.response?.data || error.message);
+    res.status(200).json({ text: "Erro ao consultar o GPT 😥 Tente novamente." });
   }
 });
 
