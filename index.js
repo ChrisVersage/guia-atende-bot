@@ -7,7 +7,7 @@ app.use(express.json());
 
 const JUMPAD_ID = process.env.JUMPAD_ID;
 const TOKEN = process.env.JUMPAD_TOKEN;
-const JUMPAD_URL = `https://api.jumpad.superlogica.com/agents/${JUMPAD_ID}/respond`;
+const JUMPAD_URL = `https://api.jumpad.io/agents/${JUMPAD_ID}/respond`; // ← endpoint corrigido
 
 app.post("/", async (req, res) => {
   const userMessage = req.body.message?.text || "Olá!";
@@ -41,3 +41,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Bot rodando na porta ${PORT}`);
 });
+Corrige endpoint da API Jumpad
