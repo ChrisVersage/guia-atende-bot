@@ -5,7 +5,6 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
-// IDs e tokens fornecidos como variáveis de ambiente
 const JUMPAD_ID = process.env.JUMPAD_ID;
 const TOKEN = process.env.JUMPAD_TOKEN;
 const JUMPAD_URL = `https://api.jumpad.superlogica.com/agents/${JUMPAD_ID}/respond`;
