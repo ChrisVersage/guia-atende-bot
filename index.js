@@ -41,4 +41,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Bot rodando na porta ${PORT}`);
 });
-Corrige endpoint da API Jumpad
