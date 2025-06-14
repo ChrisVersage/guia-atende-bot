@@ -5,9 +5,10 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
+// Variáveis de ambiente
 const JUMPAD_ID = process.env.JUMPAD_ID;
 const TOKEN = process.env.JUMPAD_TOKEN;
-const JUMPAD_URL = `https://api.jumpad.io/agents/${JUMPAD_ID}/respond`; // ← endpoint corrigido
+const JUMPAD_URL = `https://api.jumpad.io/agents/${JUMPAD_ID}/respond`; // ✅ Endpoint correto
 
 app.post("/", async (req, res) => {
   const userMessage = req.body.message?.text || "Olá!";
@@ -33,7 +34,9 @@ app.post("/", async (req, res) => {
 
   } catch (error) {
     console.error("Erro ao consultar o Jumpad:", error.response?.data || error.message);
-    res.status(200).json({ text: "Erro ao responder via Jumpad 😥 Tente novamente mais tarde." });
+    res.status(200).json({
+      text: "Erro ao responder via Jumpad 😥 Tente novamente mais tarde."
+    });
   }
 });
 
