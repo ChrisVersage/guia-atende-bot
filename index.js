@@ -7,7 +7,9 @@ app.use(express.json());
 
 const JUMPAD_ID = process.env.JUMPAD_ID;
 const TOKEN = process.env.JUMPAD_TOKEN;
-const JUMPAD_URL = `https://fusion-workspace.jumpad.ai/api/agents/${JUMPAD_ID}/respond`; // ✅ CORRIGIDO
+
+// ✅ Endpoint correto para chamar agente Jumpad
+const JUMPAD_URL = `https://fusion-workspace.jumpad.ai/api/agents/${JUMPAD_ID}/respond`;
 
 app.post("/", async (req, res) => {
   const userMessage = req.body.message?.text || "Olá!";
