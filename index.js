@@ -5,11 +5,12 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 
+// Variáveis de ambiente
 const JUMPAD_ID = process.env.JUMPAD_ID;
 const TOKEN = process.env.JUMPAD_TOKEN;
 
-// ✅ Endpoint correto para chamar agente Jumpad
-const JUMPAD_URL = `https://fusion-workspace.jumpad.ai/api/agents/${JUMPAD_ID}/respond`;
+// ✅ Endpoint correto para agentes Jumpad da instância Superlógica
+const JUMPAD_URL = `https://jumpad.superlogica.tech/api/agents/${JUMPAD_ID}/respond`;
 
 app.post("/", async (req, res) => {
   const userMessage = req.body.message?.text || "Olá!";
